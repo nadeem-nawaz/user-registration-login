@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.models.UserDetails;
-import com.springboot.serviceImpl.UserDetailsServiceImpl;
 import com.springboot.services.UserDetailsService;
 
 @RestController
