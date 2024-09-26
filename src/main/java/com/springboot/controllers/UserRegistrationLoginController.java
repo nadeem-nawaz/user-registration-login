@@ -8,19 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.models.UserDetails;
 import com.springboot.serviceImpl.UserDetailsServiceImpl;
+import com.springboot.services.UserDetailsService;
 
 @RestController
 public class UserRegistrationLoginController {
 	
 	@Autowired
-	private UserDetailsServiceImpl userDetailsServiceImpl;
+	private UserDetailsService userDetailsService;
 	
 	@PostMapping
 	public ResponseEntity<String> saveUserDetails(@PathVariable String username, @PathVariable String emailId) {
 		final UserDetails userDetails = new UserDetails();
 		userDetails.setUsername(username);
 		userDetails.setEmailId(emailId);
-		userDetailsServiceImpl.saveUserDetails(userDetails);
+		userDetailsService.saveUserDetails(userDetails);
 		return ResponseEntity.ok().body("done");
 	}
 }
