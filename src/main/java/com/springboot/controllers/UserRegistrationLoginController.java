@@ -1,7 +1,11 @@
 package com.springboot.controllers;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,5 +26,17 @@ public class UserRegistrationLoginController {
 	public ResponseEntity<UserDetails> saveUserDetails(@RequestBody UserDetails userDetails) {
 		final UserDetails userDetailsResponse = userDetailsService.saveUserDetails(userDetails);
 		return ResponseEntity.ok().body(userDetailsResponse);
+	}
+	
+	@GetMapping(value = "/fetchAllUsers")
+	public ResponseEntity<List<UserDetails>> getAllUsers() {
+		List<UserDetails> userDetailList = userDetailsService.getAllUsers();
+		return ResponseEntity.ok().body(userDetailList);
+	}
+	
+	@GetMapping(value = "/getUsersById/{id}")
+	public ResponseEntity<UserDetails> agetUsersById(@PathVariable("id") Integer id) {
+		final UserDetails userDetailResponse = userDetailsService.getUserById(id);
+		return ResponseEntity.ok().body(userDetailResponse);
 	}
 }

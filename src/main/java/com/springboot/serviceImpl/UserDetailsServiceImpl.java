@@ -1,5 +1,8 @@
 package com.springboot.serviceImpl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +19,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails saveUserDetails(UserDetails userDetails) {
 		return userDetailsRepo.save(userDetails);
+	}
+
+	@Override
+	public List<UserDetails> getAllUsers() {
+		return userDetailsRepo.findAll();
+	}
+
+	@Override
+	public UserDetails getUserById(Integer id) {
+		return userDetailsRepo.findByUserId(id);
 	}
 }
