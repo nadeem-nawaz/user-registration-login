@@ -14,7 +14,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private UserDetailsRepository userDetailsRepo;
 
 	@Override
-	public void saveUserDetails(UserDetails userDetails) {
-		userDetailsRepo.save(userDetails);
+	public UserDetails saveUserDetails(UserDetails userDetails) {
+		return userDetailsRepo.save(userDetails);
 	}
 }
