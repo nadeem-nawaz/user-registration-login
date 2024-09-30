@@ -8,5 +8,5 @@ import com.springboot.models.UserDetails;
 public interface UserDetailsService {
 	public UserDetails saveUserDetails(UserDetails userDetails);
 	public List<UserDetails> getAllUsers();
-	public UserDetails getUserById(Integer id);
+	public Optional<UserDetails> getUserById(Integer id);
 }

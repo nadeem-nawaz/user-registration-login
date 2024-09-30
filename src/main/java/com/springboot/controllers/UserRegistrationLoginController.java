@@ -18,7 +18,7 @@ import com.springboot.services.UserDetailsService;
 @RestController
 @RequestMapping(value = "/api/userRegistration")
 public class UserRegistrationLoginController {
-	
+
 	@Autowired
 	private UserDetailsService userDetailsService;
 
@@ -27,16 +27,16 @@ public class UserRegistrationLoginController {
 		final UserDetails userDetailsResponse = userDetailsService.saveUserDetails(userDetails);
 		return ResponseEntity.ok().body(userDetailsResponse);
 	}
-	
+
 	@GetMapping(value = "/fetchAllUsers")
 	public ResponseEntity<List<UserDetails>> getAllUsers() {
 		List<UserDetails> userDetailList = userDetailsService.getAllUsers();
 		return ResponseEntity.ok().body(userDetailList);
 	}
-	
+
 	@GetMapping(value = "/getUsersById/{id}")
-	public ResponseEntity<UserDetails> agetUsersById(@PathVariable("id") Integer id) {
-		final UserDetails userDetailResponse = userDetailsService.getUserById(id);
+	public ResponseEntity<Optional<UserDetails>> agetUsersById(@PathVariable("id") Integer id) {
+		final Optional<UserDetails> userDetailResponse = userDetailsService.getUserById(id);
 		return ResponseEntity.ok().body(userDetailResponse);
 	}
 }

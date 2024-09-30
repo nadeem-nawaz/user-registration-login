@@ -27,7 +27,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	}
 
 	@Override
-	public UserDetails getUserById(Integer id) {
-		return userDetailsRepo.findByUserId(id);
-	}
+	public Optional<UserDetails> getUserById(Integer id) {
+		return userDetailsRepo.findById(id);	}
 }
