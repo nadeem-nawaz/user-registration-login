@@ -35,7 +35,7 @@ public class UserRegistrationLoginController {
 	}
 
 	@GetMapping(value = "/getUsersById/{id}")
-	public ResponseEntity<Optional<UserDetails>> agetUsersById(@PathVariable("id") Integer id) {
+	public ResponseEntity<Optional<UserDetails>> getUsersById(@PathVariable("id") Integer id) {
 		final Optional<UserDetails> userDetailResponse = userDetailsService.getUserById(id);
 		return ResponseEntity.ok().body(userDetailResponse);
 	}
